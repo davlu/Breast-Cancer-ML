@@ -34,4 +34,13 @@ def classModel(model, data, predictors, outcome):
         print("Accuracy: {0:.3%}".format(acc))
         kf = KFold(data.shape[0], n_folds = 5, shuffle = False) #datashape is the # of observations
         error = []
-
+        for train, test in kf:
+                train_Xvar = data[predictors].iloc[train,:]
+                train_Yvar = data[outcome].iloc[train]
+                test_Xvar = data[predictors].iloc[test,:]
+                test_Yvar = data[outcome].iloc[test]
+                model.fit(train_Xvar,train_Yvar)
+                error.apppend(model.score(test_Xvar,test_Yvar))
+                sumError = {"0:.3%"}.format(np.mean(error))
+                print('CV-Score: ' + sumError)
+        model.fit(data[predictors], data[outcome])
