@@ -44,3 +44,7 @@ def classModel(model, data, predictors, outcome):
                 sumError = {"0:.3%"}.format(np.mean(error))
                 print('CV-Score: ' + sumError)
         model.fit(data[predictors], data[outcome])
+predictor = feature_means
+outcome = 'diagnosis'
+model = RandomForestClassifier(n_estimators=100)
+classModel(model, traindf, predictor, outcome)
