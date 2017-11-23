@@ -35,7 +35,7 @@ def classModel(model, data, predictors, outcome):
         kf = KFold(data.shape[0], n_folds = 5, shuffle = False) #datashape is the # of observations
         error = []
         for train, test in kf:
-                train_Xvar = data[predictors].iloc[train,:]
+                train_Xvar = data[predictors].iloc[train,:]   #iloc finds [startrow:endrow,startcolumn:endcolumn]
                 train_Yvar = data[outcome].iloc[train]
                 test_Xvar = data[predictors].iloc[test,:]
                 test_Yvar = data[outcome].iloc[test]
