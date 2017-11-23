@@ -13,7 +13,7 @@ from sklearn import metrics
 
 df  = pd.read_csv('cancer.csv', header =0)
 df.drop('id',axis = 1, inplace=True)    #don't need ID & Unnamed columns
-df.drop('Unnamed: 32',axis =1,inplace = True)
+df.drop('Unnamed: 32',axis =1,inplace = True) #axis 1= horizontal rows/ axis 0 = vertical columns
 df['diagnosis'] = df['diagnosis'].map({'M':1,'B':0})        #map [M]alignant values to '1', [B]enign values to '0'
 plt.hist(df['diagnosis'])
 plt.title('diagnosis(M:1 , B:0)')
